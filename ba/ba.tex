@@ -1,0 +1,128 @@
+\documentclass[12p]{scrartcl}
+
+\title{Overview Over My Bachelor's Thesis}
+\author{Jannis Eichborn}
+
+\usepackage{color}
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\textcolor{red}{*Things related to Usability later in the explanations}
+\tableofcontents
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction
+\section{Introduction \& Motivation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\textcolor{red}{Coding in an Open-Source Environment}}
+
+\textbf{Brief Description and History}\\
+Here I want to talk about how software is developed, give a brief history on how open-source developed over time and present different approaches of people working together on large problems.\\
+What are the main goals of this community and how are these goals expressed?\\
+
+\textbf{The Open-Source Community is Changing}\\
+What are recent developments, how is code shared, where do we want to go?
+Which ideals are fulfilled and which things are still in a messy state?\\
+
+\textbf{What is the Problem with Current Integrated Development Environments?}\\
+\textcolor{red}{Introduction of usability in the context of working with IDEs}\\
+Description of problems in the workflow regarding spreading of code, packages in different forms and finding suitable discussion and documentation. Reuse of code is bad and tedious.
+
+
+\subsection{\textcolor{red}{Our Idea for Working on Large Projects in the Future}}
+Description of the idea of having more code in one place with interchangeable and competing solutions. Using crowd sourcing for evaluation...\\
+\textcolor{red}{How is the functionality of an online database for code integral part of the IDE's usability?}\\
+
+\subsection{My Work \& Goals - A Self-organizing Database for Code}
+What exactly will my work do in this context and what are my goals. 
+Description of the structure of my thesis. What usability criteria do I aim for?\\
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Analysis and Formalisation of the Problem
+\section{Analysis \& Formalisation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{\textcolor{red}{Description of Use-Cases - Client Requirements}}
+\textcolor{red}{This part will include extensive formalisations with respect to usability. How can this be formalised, what metrics can be derived? How do I define the client in this scenario and what is important to this client?}\\
+I describe how people are going to use the client IDE and what requirements arise from this. I will talk about portability between different OSs, what performance clients want and other aspects which are important to the implementation. What are possible interfaces and how can I meet them?
+\subsection{Non-functional (technical) Requirements to the System}
+This section focuses on things like scalability, robustness, the iteration speed of changes, whether and where changes to the design are possible and how security and safety standards can or have to be met. Which things are necessary and which ones are nice to have?
+\subsection{\textcolor{red}{Goals of my Work}}
+Which derive from the requirements above. \textcolor{red}{Explicit goals with respect to usability.}
+\subsection{Structure of My Work}
+What comes first. How do I want to accomplish the goals and what is the prioritization.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relevant Basics
+\section{Relevant Basics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{JVM - Choice of Language and Context}
+Why it is still relevant in the context of large-scale distributed computation
+\subsection{SQL to NoSQL - Why Graph Databases?}
+What are recent developments in the requirements on databases and how are those met. New types of databases are emerging.
+\subsection{Distributed Databases}
+Distributed computations require new forms of data-management. Distributed systems lead to more scalability and robustness in the case of hardware-failures.
+\subsection{General Thoughts on Performance \& Scalability in Recent Software Design}
+What is the bottleneck in performance nowadays, how is that important to me.
+
+\subsection{\textcolor{red}{Usability in the Context of Technical Systems}}
+\textcolor{red}{Usability without interfaces. Including thoughts about usability in the structure of a program/package.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Evaluation and Verification
+\section{Evaluation \& Verification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\textcolor{red}{Why Thinking About Testing Right from the Start Is a Good Idea}}
+Test-driven design and other thoughts..\\
+\textcolor{red}{How do I test for the usability I introduced earlier?}
+\subsection{What I Need to Test}
+Description of formal aspects which have to be tested. Derivation of suitable measures for the problems.
+\subsection{How I Test}
+What are the principles in the implementation of my tests.\\
+\textcolor{red}{Implementation of usability measures}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Design and Implementation
+\section{Design \& Implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{What Software I Use in Detail}
+software packages, bundles, tools etc...
+\subsection{First Sketch - Design of my Implementation}
+how do I tackle the problems and requirements?
+\subsection{More Detailed Description of the Implementation}
+To a necessary degree of precision that is.
+\subsection{Evaluation of the First Sketch}
+What is good, what needs to be done...
+\subsection{Description of the Iteration}
+\subsection{Further Evaluation}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conclusions
+\section{Conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{State of the Implementation at the End of My Work}
+\subsection{\textcolor{red}{Comparison to Requirements and Goals}}
+What was fulfilled, what not and what might be critical. Can the application be extended? What have I achieved at what can people to with it at the time?\\
+\textcolor{red}{Is the code I wrote usable from the clients perspective?}
+\subsection{What to Come - Future from here on}
+What are the next steps and which people can get involved. How do I see the chances in the future. Concluding thoughts on performance and scalability.
+\subsection{Summary}
+
+\end{document}
