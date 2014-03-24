@@ -1,12 +1,25 @@
 \documentclass[12p]{scrartcl}
 
+%%%%% General information %%%%%
 \title{Overview Over My Bachelor's Thesis}
 \author{Jannis Eichborn}
 
+%%%%%%%%%% Packages %%%%%%%%%%%
 \usepackage{color}
+\usepackage{cite}
+\usepackage{natbib}
 
+%%%%%%%%%% Settings %%%%%%%%%%%
 \setlength{\parindent}{0pt}
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The actual work
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \begin{titlepage}
@@ -22,12 +35,12 @@
 \subsection{\textcolor{red}{Coding in an Open-Source Environment}}
 
 \textbf{Brief Description and History}\\
-Here I want to talk about how software is developed, give a brief history on how open-source developed over time and present different approaches of people working together on large problems.\\
+Here I want to talk about how software is developed, give a brief history on how open-source developed over time and present different approaches of people working together on large problems. \cite{Chang2008}\\
 What are the main goals of this community and how are these goals expressed?\\
 
 \textbf{The Open-Source Community is Changing}\\
 What are recent developments, how is code shared, where do we want to go?
-Which ideals are fulfilled and which things are still in a messy state?\\
+Which ideals are fulfilled and which \cite{Chang2008} things are still in a messy state?\\
 
 \textbf{What is the Problem with Current Integrated Development Environments?}\\
 \textcolor{red}{Introduction of usability in the context of working with IDEs}\\
@@ -124,5 +137,14 @@ What was fulfilled, what not and what might be critical. Can the application be 
 \subsection{What to Come - Future from here on}
 What are the next steps and which people can get involved. How do I see the chances in the future. Concluding thoughts on performance and scalability.
 \subsection{Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Appendix A - References}
+%%%%%%% Bibliographie %%%%%%%%%
+\bibliography{sources}
+\bibliographystyle{plain}
+
 
 \end{document}

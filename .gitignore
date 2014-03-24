@@ -3,3 +3,7 @@
 *.toc
 *.log
 *.synctex.gz
+*.bbl
+*.blg
+*.dvi
+
