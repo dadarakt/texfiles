@@ -8,11 +8,27 @@
 \usepackage{color}
 \usepackage{cite}
 \usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
 
 %%%%%%%%%% Settings %%%%%%%%%%%
-\setlength{\parindent}{0pt}
+% No indents, should be unchecked later
+\setlength{\parindent}{0pt}  
 
+% Make all items in the contents chart clickable
+\hypersetup{linktoc=all}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
+% Set the style of figures
+\floatstyle{boxed}
+\restylefloat{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,16 +47,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction
 \section{Introduction \& Motivation}
+\label{sec:introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\textcolor{red}{Coding in an Open-Source Environment}}
 
 \textbf{Brief Description and History}\\
-Here I want to talk about how software is developed, give a brief history on how open-source developed over time and present different approaches of people working together on large problems. \cite{Chang2008}\\
+Here I want to talk about how software is developed, give a brief history on how open-source developed over time and present different approaches of people working together on large problems. \\
 What are the main goals of this community and how are these goals expressed?\\
 
 \textbf{The Open-Source Community is Changing}\\
 What are recent developments, how is code shared, where do we want to go?
-Which ideals are fulfilled and which \cite{Chang2008} things are still in a messy state?\\
+Which ideals are fulfilled and which  things are still in a messy state?\\
 
 \textbf{What is the Problem with Current Integrated Development Environments?}\\
 \textcolor{red}{Introduction of usability in the context of working with IDEs}\\
@@ -55,23 +72,57 @@ Description of the idea of having more code in one place with interchangeable an
 What exactly will my work do in this context and what are my goals. 
 Description of the structure of my thesis. What usability criteria do I aim for?\\
 
-
-
+\subsection*{General notes - Abbreviations.}
+\begin{itemize}
+	\item I will use the term \textit{function} for anything that is a function, method, routine or subroutine in a given language. Maybe just talking about Julia here?
+\end{itemize}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Analysis and Formalisation of the Problem
 \section{Analysis \& Formalisation}
+\label{sec:analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\textcolor{red}{Description of Use-Cases - Client Requirements}}
-\textcolor{red}{This part will include extensive formalisations with respect to usability. How can this be formalised, what metrics can be derived? How do I define the client in this scenario and what is important to this client?}\\
-I describe how people are going to use the client IDE and what requirements arise from this. I will talk about portability between different OSs, what performance clients want and other aspects which are important to the implementation. What are possible interfaces and how can I meet them?
+\label{sec:clientReq}
+\textit{\textcolor{red}{This part will include extensive formalisations with respect to usability. How can this be formalised, what metrics can be derived? How do I define the client in this scenario and what is important to this client?}\\
+I describe how people are going to use the client IDE and what requirements arise from this. I will talk about portability between different OSs, what performance clients want and other aspects which are important to the implementation. What are possible interfaces and how can I meet them?}
+
+% General thoughts
+First of all I will have to describe potential clients to my system. What kind of applications will make use of the database, how do they want to communicate and what does this interaction imply for the architecture of the database?
+
+Well to begin with is should be obvious, that I will not be concerned with any kind of graphical interface to the database. It would store millions of entries with several different versions of each entry. Of course one could think of means to make an interactive query interface which can display the database in it entirety but in my mind this is no use case. Users should always query the database in the context of a more elaborate system on top. If you wanted to search for documentation or code only there are already thousands of possibilities to do so on the internet (TODO quote).
+From my point of view the system is designed to be used by an IDE or something equivalent. It does not mean that other more 'traditional' use-cases are not possible, but I will not be concerned with those in this chapter. Also the aimed database-representation would probably perform suboptimal for these kind of uses (multiple rapid queries at a time over simple indices). For these tasks there are solutions (TODO quote) out there and they cannot be the target use-cases for my system.
+
+% Example in an IDE
+In my mind the focus of the system must be to aggregate over the contained data for more elaborate queries. For example a query in plain English would be something like this: "Give me all the function signatures which match this given set of parameters" or "Which functions have the same parameters and return the same type?".\\
+These queries result from using the a possible IDE or smart query system on top of the database. Let me stick with using an IDE for a more extensive example: A User writes a function from the top of his head. He does not refer to anything in the database (yet), but instead simply writes ahead. \\
+Right after he has entered the signature the system can check for the following: 
+\begin{enumerate}
+	\item Is there already a function with the \textit{same} name?
+	\item Is there already a function with a very \textit{similar} name?
+	\begin{itemize}
+		\item If so, are the parameters the same and the intended functionality might be the same?
+		\item Or are the parameters so different, that it is highly improbable that the intended function might do the same as one in the database.
+	\end{itemize}
+\end{enumerate}
+
+Case 1) 
+should definitely be shown to the user. Maybe somebody has already done all the work he is going to do now. This might even be an expert in this area who has spend approximately 42 hours upon perfecting the runtime-behavior of this single function. In this case users might be happy to just plug-in the given function as is, or at least make use of the code to get ideas for his own improvements. I think this case might sound pretty uncommon but with thousands of users which roughly confirm to naming-standards of functions, this feature might work pretty fine right out of the box.
+
+Case 2)
+Using some sort of similarity-measure, one could determine a class of function names, which are similar enough to the given function name. Using this similarity and finding that the parameters to the function are the same, there is a high chance, that this function might be relevant to the user
+
 \subsection{Non-functional (technical) Requirements to the System}
 This section focuses on things like scalability, robustness, the iteration speed of changes, whether and where changes to the design are possible and how security and safety standards can or have to be met. Which things are necessary and which ones are nice to have?
+
+
 \subsection{\textcolor{red}{Goals of my Work}}
 Which derive from the requirements above. \textcolor{red}{Explicit goals with respect to usability.}
+
+
 \subsection{Structure of My Work}
 What comes first. How do I want to accomplish the goals and what is the prioritization.
 
@@ -79,6 +130,7 @@ What comes first. How do I want to accomplish the goals and what is the prioriti
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Relevant Basics
 \section{Relevant Basics}
+\label{sec:basics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{JVM - Choice of Language and Context}
 Why it is still relevant in the context of large-scale distributed computation
@@ -97,6 +149,7 @@ What is the bottleneck in performance nowadays, how is that important to me.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Evaluation and Verification
 \section{Evaluation \& Verification}
+\label{sec:evaluation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\textcolor{red}{Why Thinking About Testing Right from the Start Is a Good Idea}}
 Test-driven design and other thoughts..\\
@@ -111,6 +164,7 @@ What are the principles in the implementation of my tests.\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Design and Implementation
 \section{Design \& Implementation}
+\label{sec:implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{What Software I Use in Detail}
 software packages, bundles, tools etc...
@@ -129,6 +183,7 @@ What is good, what needs to be done...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Conclusions
 \section{Conclusions}
+\label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{State of the Implementation at the End of My Work}
 \subsection{\textcolor{red}{Comparison to Requirements and Goals}}
@@ -138,13 +193,22 @@ What was fulfilled, what not and what might be critical. Can the application be 
 What are the next steps and which people can get involved. How do I see the chances in the future. Concluding thoughts on performance and scalability.
 \subsection{Summary}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Testing features}
+This is a citation \cite{Chang2008}\\
+This is an image as a floating object with a ref to it: See Figure \ref{fig:fieseText} on page \pageref{fig:fieseText}
+\begin{figure}[h]		
+ 	\includegraphics[scale=0.3]{figures/grumpyCat.jpg}
+	\caption{Ne fiese text is dat}
+	\label{fig:fieseText}
+\end{figure}
+
 \section*{Appendix A - References}
 %%%%%%% Bibliographie %%%%%%%%%
 \bibliography{sources}
 \bibliographystyle{plain}
-
 
 \end{document}
